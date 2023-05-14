@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class UserController {
     private static int userId = 1;
 
     @PostMapping
-    public User create(@RequestBody User user) {
+    public User create(@Valid @RequestBody User user) {
         if (user.getEmail().isEmpty() || !user.getEmail().contains("@") || user.getLogin().isBlank() ||
                 user.getLogin().contains(" ") || user.getBirthday().isAfter(LocalDate.now())) {
             log.error("Ошибка в создании пользователя " + user);
@@ -37,7 +38,7 @@ public class UserController {
     }
 
     @PutMapping
-    public User put(@RequestBody User user) {
+    public User put(@Valid @RequestBody User user) {
         if (user.getEmail().isEmpty() || !user.getEmail().contains("@") || user.getLogin().isBlank() ||
                 user.getLogin().contains(" ") || user.getBirthday().isAfter(LocalDate.now())) {
             log.error("Ошибка в создании пользователя " + user);

@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class FilmController {
     private final Map<Integer, Film> films = new HashMap<>();
 
     @PostMapping
-    public Film create(@RequestBody Film film) {
+    public Film create(@Valid @RequestBody Film film) {
         if (film.getName().isEmpty() || film.getDescription().getBytes().length > 200 ||
                 film.getReleaseDate().isBefore(START_DATE) || film.getDuration() < 1) {
             log.error("ошибка в создании фильма " + film);
@@ -34,7 +35,7 @@ public class FilmController {
     }
 
     @PutMapping
-    public Film put(@RequestBody Film film) {
+    public Film put(@Valid @RequestBody Film film) {
         if (film.getName().isEmpty() || film.getDescription().getBytes().length > 200 ||
                 film.getReleaseDate().isBefore(START_DATE) || film.getDuration() < 1) {
             log.error("ошибка в обновлении фильма " + film);
