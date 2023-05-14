@@ -13,15 +13,15 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class User {
     private int id;
-    @NotBlank (message = "Введите логин")
-    @NotNull (message = "Введите логин")
+    @NotBlank(message = "Введите логин")
+    @NotNull(message = "Введите логин")
     private String login;
-    @Email (message = "Введите email")
-    @NotBlank (message = "Введите email")
-    @NotNull (message = "Введите email")
+    @Email(message = "Введите email")
+    @NotBlank(message = "Введите email")
+    @NotNull(message = "Введите email")
     private String email;
     private String name;
     @NotNull(message = "Пустая дата рождения")
-    @Past (message = "Будущее еще не наступило")
+    @Past(message = "Будущее еще не наступило")
     private LocalDate birthday;
 }
