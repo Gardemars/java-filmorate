@@ -9,7 +9,7 @@
         <relativePath/>
     </parent>
     <groupId>ru.yandex.practicum</groupId>
-    <artifactId>filmorate-draft</artifactId>
+    <artifactId>filmorate</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>filmorate</name>
     <description>Demo project filmorate</description>
