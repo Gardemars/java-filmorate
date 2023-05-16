@@ -7,8 +7,9 @@ import ru.yandex.practicum.filmorate.model.User;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -22,33 +23,18 @@ public class UserController {
 
     @PostMapping
     public User create(@Valid @RequestBody User user) {
-        if (user.getEmail().isEmpty() || !user.getEmail().contains("@") || user.getLogin().isBlank() ||
-                user.getLogin().contains(" ") || user.getBirthday().isAfter(LocalDate.now())) {
-            log.error("Ошибка в создании пользователя " + user);
-            throw new ValidationException("Ошибка в полях пользователя");
+        if (validationUser(user)) {
+            user.setId(userId++);
+            users.put(user.getId(), user);
+            log.info("Пользователь " + user.getName() + " c id " + user.getLogin() + " добавлен");
         }
-        if (user.getName() == null || user.getName().isBlank()) {
-            user.setName(user.getLogin());
-            log.info("Так как отсутствовало имя пользователя вместо него был использован логин " + user.getLogin());
-        }
-        user.setId(userId++);
-        users.put(user.getId(), user);
-        log.info("Пользователь " + user.getName() + " c id " + user.getLogin() + " добавлен");
         return users.get(user.getId());
     }
 
     @PutMapping
-    public User put(@Valid @RequestBody User user) {
-        if (user.getEmail().isEmpty() || !user.getEmail().contains("@") || user.getLogin().isBlank() ||
-                user.getLogin().contains(" ") || user.getBirthday().isAfter(LocalDate.now())) {
-            log.error("Ошибка в создании пользователя " + user);
-            throw new ValidationException("Ошибка в полях пользователя");
-        }
-        if (user.getName() == null || user.getName().isBlank()) {
-            user.setName(user.getLogin());
-            log.info("Так как отсутствовало имя пользователя вместо него был использован логин " + user.getLogin());
-        }
-        if (users.containsKey(user.getId())) {
+    public User update(@Valid @RequestBody User user) {
+        if (validationUser(user) && users.containsKey(user.getId())) {
+
             users.put(user.getId(), user);
             log.info("Пользователь " + user.getName() + " c id " + user.getId() + " был обновлен");
             return users.get(user.getId());
@@ -59,7 +45,21 @@ public class UserController {
     }
 
     @GetMapping
-    public Collection<User> findAll() {
-        return users.values();
+    public List<User> findAll() {
+        return new ArrayList<>(users.values());
+    }
+
+    private boolean validationUser(User user) {
+        if (user.getEmail().isEmpty() || !user.getEmail().contains("@") || user.getLogin().isBlank() ||
+                user.getLogin().contains(" ") || user.getBirthday().isAfter(LocalDate.now())) {
+            log.error("Ошибка в полях пользователя " + user);
+            throw new ValidationException("Ошибка в полях пользователя");
+        } else {
+            if (user.getName() == null || user.getName().isBlank()) {
+                user.setName(user.getLogin());
+                log.info("Так как отсутствовало имя пользователя вместо него был использован логин " + user.getLogin());
+            }
+            return true;
+        }
     }
 }
