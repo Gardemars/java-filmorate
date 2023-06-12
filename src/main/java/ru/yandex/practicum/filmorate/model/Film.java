@@ -1,15 +1,16 @@
 package ru.yandex.practicum.filmorate.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
-@AllArgsConstructor
+
 public class Film {
     private int id;
     @NotBlank(message = "Введите название фильма")
@@ -23,4 +24,5 @@ public class Film {
     @Positive(message = "Длительность фильма должна быть больше 0")
     @NotNull(message = "Длительность фильма должна быть больше 0")
     private int duration;
+    private Set<Integer> likes = new HashSet<>();
 }
