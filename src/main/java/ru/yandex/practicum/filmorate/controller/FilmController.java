@@ -1,6 +1,5 @@
 package ru.yandex.practicum.filmorate.controller;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
@@ -14,7 +13,6 @@ import static ru.yandex.practicum.filmorate.validation.Validation.checkId;
 
 @RestController
 @RequestMapping("/films")
-@Slf4j
 public class FilmController {
     @Autowired
     private FilmService filmService;
