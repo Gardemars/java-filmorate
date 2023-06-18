@@ -55,7 +55,7 @@ public class UserService {
             Set<Integer> common = new HashSet<>(getFriendsId(id1));
             common.retainAll(getFriendsId(id2));
             log.info("UserService receiveCommonFriends - возрат информации из userStorage по общим друзьям " +
-                            "пользователя с id = {} и пользователя с id = {}", id1, id2);
+                    "пользователя с id = {} и пользователя с id = {}", id1, id2);
             return getListOfFriends(common);
         }
         throw new IdNotFoundException("Пользователь с указанным id не найден");

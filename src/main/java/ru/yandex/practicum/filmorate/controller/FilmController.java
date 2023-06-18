@@ -18,6 +18,7 @@ import static ru.yandex.practicum.filmorate.validation.Validation.checkId;
 public class FilmController {
     @Autowired
     private final FilmService filmService;
+
     @Autowired
     public FilmController(FilmService filmService) {
         this.filmService = filmService;
