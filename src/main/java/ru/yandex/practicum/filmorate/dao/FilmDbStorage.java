@@ -102,13 +102,13 @@ public class FilmDbStorage implements FilmStorage {
         int updateId = film.getId();
         if (findFilm(updateId) != null) {
 
-            int upd = jdbcTemplate.update(UPDATE_FILM_QUERY
-                    , film.getName()
-                    , film.getDescription()
-                    , film.getReleaseDate()
-                    , film.getDuration()
-                    , film.getMpa().getId()
-                    , updateId);
+            int upd = jdbcTemplate.update(UPDATE_FILM_QUERY,
+                    film.getName(),
+                    film.getDescription(),
+                    film.getReleaseDate(),
+                    film.getDuration(),
+                    film.getMpa().getId(),
+                    updateId);
 
             jdbcTemplate.update(DELETE_FILM_GENRE, updateId);
             filmGenres(updateId, film.getGenres());
