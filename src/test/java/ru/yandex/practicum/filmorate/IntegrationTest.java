@@ -34,7 +34,7 @@ public class IntegrationTest {
     private final GenresDbStorage genresDbStorage;
     private final MpaDbStorage mpaDbStorage;
 
-    private final static LocalDate DATE = LocalDate.of(1995, 5, 20);
+    private static final LocalDate DATE = LocalDate.of(1995, 5, 20);
     User firstUser = new User(0, "test1@mail.ru", "test1", null, DATE);
     User secondUser = new User(0, "test2@mail.ru", "test2", null, DATE);
     User thirdUser = new User(0, "test3@mail.ru", "test3", null, DATE);

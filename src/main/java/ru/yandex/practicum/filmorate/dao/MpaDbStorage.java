@@ -3,6 +3,7 @@ package ru.yandex.practicum.filmorate.dao;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.filmorate.dao.utils.MpaMapping;
+import ru.yandex.practicum.filmorate.exception.IdNotFoundException;
 import ru.yandex.practicum.filmorate.model.MpaRating;
 
 import java.util.List;
@@ -25,6 +26,9 @@ public class MpaDbStorage {
     }
 
     public MpaRating getMpa(Integer id) {
+        if (id > 5) {
+            throw new IdNotFoundException("Рейтинг с id=" + id + " не найден");
+        }
         return jdbcTemplate.queryForObject(MPA_RATING_BY_ID, mpaMapping::mapRowToMpa, id);
     }
 }

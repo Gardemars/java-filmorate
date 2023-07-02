@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.filmorate.dao.utils.GenresMapping;
+import ru.yandex.practicum.filmorate.exception.IdNotFoundException;
 import ru.yandex.practicum.filmorate.model.Genre;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class GenresDbStorage {
     }
 
     public Genre getGenre(Integer id) {
+        if (id > 6) {
+            throw new IdNotFoundException("Жанр с id=" + id + " не найден");
+        }
         return jdbcTemplate.queryForObject(GENRES_BY_ID, genresMapping::mapRowToGenre, id);
     }
 }

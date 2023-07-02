@@ -41,7 +41,7 @@ public class FilmMapping {
                     .collect(Collectors.toList());
         }
 
-        return new Film(resultSet.getInt("user_id"), resultSet.getString("film_name"),
+        return new Film(resultSet.getInt("film_id"), resultSet.getString("film_name"),
                 resultSet.getString("description"),
                 LocalDate.parse(resultSet.getString("release_date"), DATE_FORMAT),
                 resultSet.getLong("duration"),
