@@ -94,12 +94,12 @@ public class UserDbStorage implements UserStorage {
     public User update(User user) {
         validateUser(user);
         int updateId = user.getId();
-        int upd = jdbcTemplate.update(UPDATE_USER_BY_ID
-                , user.getEmail()
-                , user.getLogin()
-                , user.getName()
-                , user.getBirthday()
-                , updateId);
+        int upd = jdbcTemplate.update(UPDATE_USER_BY_ID,
+                user.getEmail(),
+                user.getLogin(),
+                user.getName(),
+                user.getBirthday(),
+                updateId);
         if (upd > 0) {
             log.info("Пользователь c id={} обновлён", updateId);
             return find(updateId);
