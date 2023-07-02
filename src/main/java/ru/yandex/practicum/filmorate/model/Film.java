@@ -1,16 +1,18 @@
 package ru.yandex.practicum.filmorate.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
-@Data
 
+@Getter
+@Setter
 public class Film {
     private int id;
     @NotBlank(message = "Введите название фильма")
@@ -23,6 +25,21 @@ public class Film {
     private LocalDate releaseDate;
     @Positive(message = "Длительность фильма должна быть больше 0")
     @NotNull(message = "Длительность фильма должна быть больше 0")
-    private int duration;
-    private Set<Integer> likes = new HashSet<>();
+    private long duration;
+    private long rate;
+    private MpaRating mpa;
+    private List<Genre> genres;
+    private List<Integer> likes = new ArrayList<>();
+
+    public Film(int id, String name, String description, LocalDate releaseDate, long duration, MpaRating mpa,
+                long rate, List<Genre> genres) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.duration = duration;
+        this.rate = rate;
+        this.mpa = mpa;
+        this.genres = genres;
+    }
 }

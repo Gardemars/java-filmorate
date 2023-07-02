@@ -16,7 +16,7 @@ import static ru.yandex.practicum.filmorate.validation.Validation.checkId;
 @RestController
 @RequestMapping("/films")
 public class FilmController {
-    @Autowired
+
     private final FilmService filmService;
 
     @Autowired

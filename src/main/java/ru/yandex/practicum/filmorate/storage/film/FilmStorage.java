@@ -13,5 +13,11 @@ public interface FilmStorage {
 
     String delete(int id);
 
-    Film find(int id);
+    Film findFilm(int id);
+
+    String putLike(Integer id, Integer userId);
+
+    String deleteLike(Integer id, Integer userId);
+
+    List<Film> getTopFilms(Integer count);
 }
