@@ -17,7 +17,7 @@ import static ru.yandex.practicum.filmorate.validation.Validation.validateFilm;
 import static ru.yandex.practicum.filmorate.validation.Validation.validateUser;
 
 public class ValidationTest {
-    private final LocalDate BIRTHDAY_DATE = LocalDate.now();
+    private static final LocalDate BIRTHDAY_DATE = LocalDate.now();
 
     @Test
     public void correctValidationOfUser() {
