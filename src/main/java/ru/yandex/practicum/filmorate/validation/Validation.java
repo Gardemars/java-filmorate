@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.validation;
 
+import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 import ru.yandex.practicum.filmorate.exception.IdNotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 
 import static ru.yandex.practicum.filmorate.constants.Constants.MIN_ALLOWED_DATE;
 
+@UtilityClass
 public class Validation {
 
     public static void validateUser(User user) {

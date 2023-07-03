@@ -20,6 +20,14 @@ public class Constants {
             "INSERT INTO films (name, description, release_date, duration, rate, rating_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?);";
 
+    /*  public static final String SQL_MERGE_GENRE_LINK =
+              "MERGE INTO film_genre (film_id, genre_id) KEY (film_id, genre_id) VALUES (?, ?)";
+
+      public static final String CREATE_FILM_GENRES =
+              "INSERT INTO film_genre (genre_id, film_id) VALUES (?, ?)";
+      public static final String DELETE_FILM_GENRES =
+              "DELETE FROM FILM_GENRE WHERE FILM_ID = ? AND GENRE_ID = ?";
+  */
     public static final String CREATE_FILM_GENRES_QUERY =
             "INSERT INTO film_genre (genre_id, film_id) " +
                     "SELECT ?, " +

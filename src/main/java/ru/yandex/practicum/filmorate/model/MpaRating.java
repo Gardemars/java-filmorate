@@ -5,13 +5,9 @@ import lombok.*;
 @Getter
 @Setter
 @AllArgsConstructor
-@RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 public class MpaRating {
     @NonNull
     private int id;
     private String name;
-
-    public MpaRating() {
-
-    }
 }

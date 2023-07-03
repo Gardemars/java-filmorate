@@ -26,7 +26,7 @@ public class FilmController {
 
     @GetMapping
     public List<Film> findAll() {
-        log.info("В FilmControler получен Get запрос (получения списка фильмов)");
+        log.info("В FilmControler получен Get запрос (получение списка фильмов)");
         return filmService.getFilms();
     }
 

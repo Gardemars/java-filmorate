@@ -39,14 +39,15 @@ public class IntegrationTest {
     User secondUser = new User(0, "test2@mail.ru", "test2", null, DATE);
     User thirdUser = new User(0, "test3@mail.ru", "test3", null, DATE);
 
-    Film firstFilm = new Film(0, "film1", "...", DATE, 100, new MpaRating(1), 10,
-            List.of(new Genre(1, null), new Genre(4, null)));
-    Film secondFilm = new Film(0, "film2", "...", DATE, 100, new MpaRating(3), 100,
-            List.of(new Genre(2, null), new Genre(6, null)));
-    Film thirdFilm = new Film(0, "film3", "...", DATE, 100, new MpaRating(3), 100,
-            List.of(new Genre(2, null), new Genre(6, null)));
-    Film update = new Film(1, "update_film1", "...", DATE, 100, new MpaRating(3),
-            100, List.of(new Genre(2), new Genre(6)));
+    Film firstFilm = new Film(0, "film1", "...", DATE, 100, new MpaRating(1, null),
+            10, List.of(new Genre(1, null), new Genre(4, null)));
+    Film secondFilm = new Film(0, "film2", "...", DATE, 100, new MpaRating(3, null),
+            100, List.of(new Genre(2, null), new Genre(6, null)));
+    Film thirdFilm = new Film(0, "film3", "...", DATE, 100, new MpaRating(3, null),
+            100, List.of(new Genre(2, null), new Genre(6, null)));
+    Film update = new Film(1, "update_film1", "...", DATE, 100,
+            new MpaRating(3, null), 100, List.of(new Genre(2, null),
+            new Genre(6, null)));
 
     @Test
     public void createUserTest() {
