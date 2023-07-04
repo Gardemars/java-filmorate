@@ -78,6 +78,7 @@ public class FilmDbStorage implements FilmStorage {
 
     private void filmGenres(int filmId, List<Genre> filmGenres) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
+
         if (filmGenres != null) {
             for (Genre g : filmGenres) {
                 jdbcTemplate.update(connection -> {

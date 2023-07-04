@@ -1,6 +1,8 @@
 package ru.yandex.practicum.filmorate.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -10,7 +12,9 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
 public class User {
     private int id;
     @NotBlank(message = "Введите логин")
@@ -24,6 +28,7 @@ public class User {
     @NotNull(message = "Пустая дата рождения")
     @Past(message = "Будущее еще не наступило")
     private LocalDate birthday;
+    @ToString.Exclude
     private Set<Integer> friends;
     private String friendshipStatus;
 
