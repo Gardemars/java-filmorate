@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.validation;
 
+import lombok.experimental.UtilityClass;
 import org.springframework.util.StringUtils;
 import ru.yandex.practicum.filmorate.exception.IdNotFoundException;
 import ru.yandex.practicum.filmorate.exception.ValidationException;
@@ -8,9 +9,10 @@ import ru.yandex.practicum.filmorate.model.User;
 
 import java.time.LocalDate;
 
-public class Validation {
+import static ru.yandex.practicum.filmorate.constants.Constants.MIN_ALLOWED_DATE;
 
-    private static final LocalDate START_DATE = LocalDate.of(1895, 12, 28);
+@UtilityClass
+public class Validation {
 
     public static void validateUser(User user) {
         if (!StringUtils.hasLength(user.getEmail()) || !user.getEmail().contains("@")) throw new ValidationException(
@@ -30,7 +32,7 @@ public class Validation {
                 "или null");
         if (film.getDescription().length() > 200) throw new ValidationException("Описание не должно превышать 200 " +
                 "символов");
-        if (film.getReleaseDate().isBefore(START_DATE)) throw new ValidationException("Дата релиза должна " +
+        if (film.getReleaseDate().isBefore(MIN_ALLOWED_DATE)) throw new ValidationException("Дата релиза должна " +
                 "быть не раньше 28.12.1895");
         if (film.getDuration() <= 0) throw new ValidationException("Продолжительность фильма должна быть " +
                 "положительной");
